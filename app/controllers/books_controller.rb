@@ -1,12 +1,12 @@
 class BooksController < ApplicationController
-    protect_form_forgery expect:[:destroy]   
-    before_action :set_book,only[:show, :destroy]
-    around_action :action_logger,only:[:destroy]
+    protect_from_forgery expect:[:destroy]   
+    before_action :set_book, only:[:show, :destroy]
+    around_action :action_logger, only:[:destroy]
     
     def show
         respond_to do |format|
-            fomat.html
-            format.json
+            format.html
+            format.json{render json:@book}
         end
     end
 
@@ -21,7 +21,7 @@ class BooksController < ApplicationController
     private
 
     def set_book
-        @book = Book.find_by(id:params)
+        @book = Book.find_by(params[:id])
     end
 
     def action_logger
