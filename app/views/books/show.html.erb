@@ -12,3 +12,4 @@
     <%= @book.published_on.to_s%>
 </p>
 <%= link_to("書籍一覧へ","/books")%>
+<%= link_to("書籍編集","/books/#{@book.id}/edit")%>
