@@ -1,2 +1,6 @@
 <h1>書籍一覧</h1>
-<%= %>
+<% @books.each do |book|%>
+   <h2> <%= link_to "#{book.id} . #{book.name}" ,"/books/#{book.id}" %><h2>
+
+
+<% end%>

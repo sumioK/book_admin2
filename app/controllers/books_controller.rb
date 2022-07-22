@@ -17,6 +17,9 @@ class BooksController < ApplicationController
             format.json{head:no_content}
         end
     end
+    def index
+        @books = Book.all
+    end
 
     private
 
